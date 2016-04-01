@@ -1,0 +1,23 @@
+.dice {
+  float: left;
+  margin: 3px;
+  padding: 10px;
+  width: 20px;
+  font-size: 20px;
+  color: grey;
+  text-align: center;
+  background-color: rgb(240, 240, 240);
+  border: 2px solid rgba(210, 210, 210, 0);
+  border-radius: 2px;
+  transition: 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  &.lockable {
+    cursor: pointer;
+  }
+
+  &.locked {
+    background-color: rgb(230, 230, 230);
+    border-color: rgba(210, 210, 210, 1);
+    transform: translateY(55px);
+  }
+}

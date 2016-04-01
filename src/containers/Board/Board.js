@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Column } from 'components';
+import { Column, Dice } from 'components';
 const styles = require('./Board.scss');
 
 export default class Board extends Component {
@@ -31,6 +31,9 @@ export default class Board extends Component {
             'Yatzy øjne'
           ]}
         />
+        <div className={styles.dice}>
+          <Dice />
+        </div>
       </div>
     );
   }
