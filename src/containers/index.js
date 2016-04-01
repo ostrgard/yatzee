@@ -1,3 +1,3 @@
 export App from './App/App';
-export Home from './Home/Home';
+export Board from './Board/Board';
 export NotFound from './NotFound/NotFound';
