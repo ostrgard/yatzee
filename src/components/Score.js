@@ -29,10 +29,10 @@ export default class Dice extends Component {
           '-', // Bonus
           pair(dices, 2).score, // 1 par
           pairs(dices, 2, 2).score, // 2 par
-          pairs(dices, 3, 2).score, // 3 par
+          pairs(dices, 2, 3).score, // 3 par
           pair(dices, 3).score, // 3 ens
           pair(dices, 4).score, // 4 ens
-          pairs(dices, 2, 3).score, // 2x3 ens
+          pairs(dices, 3, 2).score, // 2x3 ens
           straight(dices, 'small'), // Lille straight 1-2-3-4-5
           straight(dices, 'large'), // Stor straight 2-3-4-5-6
           straight(dices, 'royal'), // Royal 1-2-3-4-5-6

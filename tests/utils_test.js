@@ -46,6 +46,10 @@ describe('Score:', () => {
     assert.deepEqual(pairs([3, 3, 4, 6, 4, 1], 2, 2), {score: 14, type: [4, 3]});
   });
 
+  it('pairs cannot be of the same type', () => {
+    assert.deepEqual(pairs([3, 3, 3, 3, 3, 1], 2, 2), {score: 0, type: undefined});
+  });
+
   it('pairs returns 16 if there\'s a pair of 1s, 3s and 4s', () => {
     assert.deepEqual(pairs([3, 3, 4, 1, 4, 1], 2, 3), {score: 16, type: [4, 3, 1]});
   });

@@ -34,6 +34,7 @@ export function pairs(arr, amount, ofAmount) {
   return arr
     .map((n, i) => pair(arr, amount, i + 1))
     .filter(n => n.score)
+    .filter((n, i, a) => a.length >= ofAmount)
     .reverse()
     .slice(undefined, ofAmount)
     .reduce((prev, cur) => {
