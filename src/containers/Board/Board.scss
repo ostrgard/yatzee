@@ -1,9 +1,15 @@
 @import "../../theme/variables.scss";
 
 .board {
-  display: block;
+  .scores {
+    display: flex;
+
+    .score {
+      margin-right: 20px;
+    }
+  }
 
   .dice {
-    margin-top: 20px;
+    margin-top: 50px;
   }
 }

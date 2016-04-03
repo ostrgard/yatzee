@@ -5,7 +5,7 @@ function Column({
 }) {
   return (
     <div>
-      {rows.map(row => <div>{row}</div>)}
+      {rows.map((row, i) => <div key={i}>{row}</div>)}
     </div>
   );
 }
