@@ -26,37 +26,44 @@ const initialState = {
   ]
 };
 
-export default function dice(state = initialState, action = {}) {
+function dice(state, action = {}) {
+  switch (action.type) {
+    case TOGGLE_LOCK:
+      return action.id !== state.id ? state : {
+        ...state,
+        locked: !state.locked
+      };
+    case ROLL:
+      return state.locked ? state : {
+        ...state,
+        value: random()
+      };
+    case RESET:
+      return {
+        ...state,
+        locked: false
+      };
+    default:
+      return state;
+  }
+}
+
+export default function dices(state = initialState, action = {}) {
   switch (action.type) {
     case TOGGLE_LOCK:
       return {
         ...state,
-        dices: state.dices.map(die => {
-          return die.id !== action.id ? die : {
-            ...die,
-            locked: !die.locked
-          };
-        })
+        dices: state.dices.map(d => dice(d, action))
       };
     case ROLL:
       return {
         rollCount: state.rollCount + 1,
-        dices: state.dices.map(die => {
-          return die.locked ? die : {
-            ...die,
-            value: random()
-          };
-        })
+        dices: state.dices.map(d => dice(d, action))
       };
     case RESET:
       return {
         rollCount: 0,
-        dices: state.dices.map(die => {
-          return {
-            ...die,
-            locked: false
-          };
-        })
+        dices: state.dices.map(d => dice(d, action))
       };
     default:
       return state;
@@ -81,4 +88,3 @@ export function reset() {
     type: RESET
   };
 }
-

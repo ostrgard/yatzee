@@ -5,10 +5,10 @@ import { sum, kind, pair, pairs, house, straight } from '../utils/score';
 import { Column } from 'components';
 
 @connect(
-  state => ({dices: state.dice.dices}),
+  state => ({dices: state.dices.dices}),
   null
 )
-export default class Dice extends Component {
+export default class Score extends Component {
   static propTypes = {
     dices: PropTypes.array
   };

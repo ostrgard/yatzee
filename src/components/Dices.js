@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { roll, toggleLock, reset } from 'redux/modules/dice';
-const styles = require('./Dice.scss');
+import { roll, toggleLock, reset } from 'redux/modules/dices';
+const styles = require('./Dices.scss');
 
 @connect(
-  state => ({dices: state.dice.dices, rollCount: state.dice.rollCount}),
+  state => ({dices: state.dices.dices, rollCount: state.dices.rollCount}),
   dispatch => bindActionCreators({roll, toggleLock, reset}, dispatch)
 )
 export default class Dices extends Component {

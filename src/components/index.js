@@ -1,3 +1,3 @@
 export Column from './Column';
-export Dice from './Dice';
+export Dices from './Dices';
 export Score from './Score';
