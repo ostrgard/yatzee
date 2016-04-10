@@ -1,6 +1,6 @@
-const TOGGLE_LOCK = 'yatzee/dice/TOGGLE_LOCK';
-const ROLL = 'yatzee/dice/ROLL';
-const RESET = 'yatzee/dice/RESET';
+const TOGGLE_LOCK = 'yatzee/dices/TOGGLE_LOCK';
+const ROLL = 'yatzee/dices/ROLL';
+const RESET = 'yatzee/dices/RESET';
 
 function random() {
   return Math.ceil(Math.random() * 6);
