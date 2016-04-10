@@ -87,3 +87,57 @@ export function straight(arr, type) {
 
   return 0;
 }
+
+function humanNumberToCodeNumber(word) {
+  switch (word) {
+    case 'ones':
+      return 1;
+    case 'twos':
+      return 2;
+    case 'threes':
+      return 3;
+    case 'fours':
+      return 4;
+    case 'fives':
+      return 5;
+    case 'sixes':
+      return 6;
+    default:
+      return false;
+  }
+}
+
+export function calc(dices, what, s = {}) {
+  const score = Object.assign({}, s);
+
+  if (what === 'ones' || what === 'twos' || what === 'threes' || what === 'fours' || what === 'fives' || what === 'sixs') {
+    score[what] = kind(dices, humanNumberToCodeNumber(what));
+    score.sum = sum(score.ones, score.twos, score.threes, score.fours, score.fives, score.sixs);
+    if (score.ones !== undefined && score.twos !== undefined && score.threes !== undefined && score.fours !== undefined && score.fives !== undefined && score.sixs !== undefined) {
+      score.bonus = score.sum >= 84 ? 50 : 0;
+    }
+  } else if (what === 'onePair') {
+    score.onePair = pair(dices, 2);
+  } else if (what === 'twoPair') {
+    score.twoPair = pairs(dices, 2, 2);
+  } else if (what === 'threePair') {
+    score.threePair = pairs(dices, 2, 3);
+  } else if (what === 'threeOak') {
+    score.threeOak = pair(dices, 3);
+  } else if (what === 'fourOak') {
+    score.fourOak = pair(dices, 4);
+  } else if (what === 'twoThreeOak') {
+    score.twoThreeOak = pairs(dices, 3, 2);
+  } else if (what === 'royal' || what === 'small' || what === 'large') {
+    score[what] = straight(dices, what);
+  } else if (what === 'house') {
+    score.house = house(dices);
+  } else if (what === 'chance') {
+    score.chance = sum(dices);
+  } else if (what === 'yatzee') {
+    score.yatzee = pair(dices, 6);
+    score.yatzeeEyes = score.yatzee > 0 ? sum(dices) : 0;
+  }
+
+  return score;
+}
